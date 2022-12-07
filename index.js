@@ -113,4 +113,29 @@ const organizeRucksacks = (str) => {
   console.log(sum);
 };
 
-organizeRucksacks(data3);
+// organizeRucksacks(data3);
+
+const organizeBadges = (str) => {
+  const input = str.split("\n").filter((word) => word != "");
+  let sum = 0;
+  for (let i = 0; i < input.length; i++) {
+    let currentWord = input[i];
+    let secondWord = input[i + 1];
+    let thirdWord = input[i + 2];
+    for (let j = 0; j < currentWord.length; j++) {
+      let currentElem = currentWord[j];
+      if (secondWord.includes(currentElem) && thirdWord.includes(currentElem)) {
+        if (currentElem === currentElem.toLowerCase()) {
+          sum += currentElem.charCodeAt(0) - 96;
+        } else {
+          sum += currentElem.charCodeAt(0) - 38;
+        }
+        break;
+      }
+    }
+    i = i + 2;
+  }
+  console.log(sum);
+};
+
+organizeBadges(data3);
