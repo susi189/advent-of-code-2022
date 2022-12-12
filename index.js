@@ -138,4 +138,33 @@ const organizeBadges = (str) => {
   console.log(sum);
 };
 
-organizeBadges(data3);
+// organizeBadges(data3);
+
+/********  Day 4 **********/
+
+const data4 = fs.readFileSync("advent-of-code-2022/datasets/dataset4.txt", {
+  encoding: "utf8",
+  flag: "r",
+});
+
+const campCleanup = (str) => {
+  const input = str.split("\n").filter((word) => word != "");
+  let sum = 0;
+
+  input.forEach((element) => {
+    let newElem = element.split(",");
+    let firstPair = newElem[0].split("-");
+    let secondPair = newElem[1].split("-");
+    if (
+      !(
+        Number(firstPair[0]) > Number(secondPair[1]) ||
+        Number(firstPair[1]) < Number(secondPair[0])
+      )
+    ) {
+      sum++;
+    }
+  });
+  console.log(sum);
+};
+
+campCleanup(data4);
